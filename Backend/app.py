@@ -59,8 +59,8 @@ def role_required(required_roles):
 # MySQL connection
 db = mysql.connector.connect(
     host="localhost",
-    user="root",
-    password="3033",
+    user="*",
+    password="*",
     database="student_erp_db"
 )
 
