@@ -74,3 +74,9 @@ htmlcov/
 *.db
 *.sqlite
 *.sqlite3
+# Terraform
+terraform/.terraform/
+terraform/*.tfstate
+terraform/*.tfstate.*
+terraform/terraform.tfvars
+*.tfplan
