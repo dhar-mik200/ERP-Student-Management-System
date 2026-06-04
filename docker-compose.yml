@@ -1,0 +1,27 @@
+services:
+
+  mysql:
+    image: mysql:8.0
+    container_name: erp_mysql
+
+    environment:
+      MYSQL_ROOT_PASSWORD: 3033
+      MYSQL_DATABASE: student_erp_db
+
+  app:
+    build: .
+
+    container_name: erp_backend
+
+    depends_on:
+      - mysql
+
+    environment:
+      DB_HOST: mysql
+      DB_USER: root
+      DB_PASSWORD: 3033
+      DB_NAME: student_erp_db
+      SECRET_KEY: my-secret-key
+
+    ports:
+      - "5000:5000"
