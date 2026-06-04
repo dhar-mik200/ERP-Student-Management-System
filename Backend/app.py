@@ -57,23 +57,20 @@ def role_required(required_roles):
     return decorator
 
 # MySQL connection
-db = mysql.connector.connect(
-    host="localhost",
-    user="*",
-    password="*",
-    database="student_erp_db"
-)
+#db = mysql.connector.connect(
+#    host="localhost",
+#    user="*",
+#    password="*",
+#    database="student_erp_db"
+#)
 
 
 def get_db_connection():
-    """Return a new MySQL connection using the same settings as the global `db`.
-    Callers should close the connection when finished.
-    """
     return mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="3033",
-        database="student_erp_db"
+        host=os.getenv("DB_HOST", "mysql"),
+        user=os.getenv("DB_USER", "root"),
+        password=os.getenv("DB_PASSWORD", "3033"),
+        database=os.getenv("DB_NAME", "student_erp_db")
     )
 
 @app.route("/")
@@ -395,4 +392,4 @@ def student_dashboard():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
