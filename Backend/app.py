@@ -75,7 +75,7 @@ def get_db_connection():
 
 @app.route("/")
 def home():
-    return "ERP Backend Connected Successfully!"
+    return "ERP Backend Connected Successfully! CI/CD Working"
 
 # admission forms..............................................................................
 
