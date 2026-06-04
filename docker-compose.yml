@@ -8,6 +8,9 @@ services:
       MYSQL_ROOT_PASSWORD: 3033
       MYSQL_DATABASE: student_erp_db
 
+    volumes:
+      - ./Database/student_erp_db.sql:/docker-entrypoint-initdb.d/student_erp_db.sql
+
   app:
     build: .
 
