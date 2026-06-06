@@ -276,10 +276,6 @@ Updated Application Deployment
 
 ---
 
-## Resume Project Summary
-
-Developed and deployed an ERP Student Management System on AWS EC2 using Terraform, Docker, Docker Compose, and GitHub Actions. Implemented Infrastructure as Code, automated CI/CD deployment pipelines, managed Linux-based cloud infrastructure, and deployed a multi-container Flask-MySQL application in a production-like environment.
-
 ---
 
 ## Author
