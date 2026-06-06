@@ -1,196 +1,293 @@
-# ERP Student Management System
+# ERP Student Management System – AWS Cloud Deployment & CI/CD Automation
 
-A full-stack ERP (Enterprise Resource Planning) Student Management System developed using Flask, MySQL, HTML, CSS, and JavaScript.
+## Overview
 
-## Features
+The ERP Student Management System is a web-based application designed to manage the complete student lifecycle, including admissions, student records, fees, hostel allocation, examinations, attendance tracking, document management, and reporting.
 
-### Student Module
-- Student Admission Registration
-- Student Login Authentication
-- Student Dashboard
-- View Fee Details
-- View Hostel Allocation
+This project demonstrates end-to-end cloud deployment using AWS EC2, Terraform Infrastructure as Code (IaC), Docker containerization, Docker Compose orchestration, and GitHub Actions CI/CD automation.
+
+---
+
+## Key Features
 
 ### Admin Module
-- Admin Login
-- Student Management
-- Fee Management
-- Hostel Allocation
-- Exam Record Management
-- Dashboard Analytics
 
-### Dashboard
-- Total Students Count
-- Total Fees Collection
-- Hostel Occupancy Statistics
+* Student Admission Management
+* Student Record Management
+* Fee Management
+* Hostel Allocation
+* Examination Management
+* Attendance Monitoring
+* Document Management
+* Analytics & Reports
+* User & Role Management
+
+### Student Module
+
+* Student Dashboard
+* View Profile Information
+* Attendance Records
+* Examination Results
+* Fee Status
+* Hostel Details
+* Document Access
+
+### Security Features
+
+* Role-Based Access Control (RBAC)
+* Secure Authentication
+* Session Management
+* Environment Variable Configuration
+* CI/CD Secret Management
 
 ---
 
 ## Technology Stack
 
+### Frontend
+
+* HTML5
+* CSS3
+* JavaScript
+
 ### Backend
-- Python
-- Flask
-- Flask Login
-- Flask CORS
-- MySQL Connector
-- Bcrypt
+
+* Python
+* Flask
 
 ### Database
-- MySQL 8.0
 
-### Frontend
-- HTML5
-- CSS3
-- JavaScript
-- Bootstrap
+* MySQL 8
+
+### DevOps & Cloud
+
+* AWS EC2
+* Terraform
+* Docker
+* Docker Compose
+* GitHub Actions
+* Linux
 
 ### Version Control
-- Git
-- GitHub
+
+* Git
+* GitHub
+
+---
+
+## Project Architecture
+
+Developer Laptop
+↓
+Git Push
+↓
+GitHub Repository
+↓
+GitHub Actions CI/CD
+↓
+AWS EC2 Instance
+↓
+Docker Compose
+↓
+Flask Container + MySQL Container
+↓
+Student ERP Application
+
+---
+
+## Infrastructure Components
+
+### AWS Resources
+
+* EC2 Instance
+* Security Group
+* SSH Access
+
+### Terraform Resources
+
+* AWS Provider
+* EC2 Instance Provisioning
+* Security Group Configuration
+* Infrastructure Outputs
+
+### Docker Components
+
+* Flask Application Container
+* MySQL Database Container
+* Docker Compose Multi-Container Setup
 
 ---
 
 ## Project Structure
 
 ```text
-ERP-Student-Management-System/
+ERP-Student-Management-System
 │
-├── Backend/
-│   └── app.py
+├── Backend
+│   ├── app.py
+│   ├── create_admin.py
+│   └── set_admin_password.py
 │
-├── Frontend/
+├── Frontend
 │   ├── login.html
 │   ├── dashboard.html
 │   ├── admission.html
-│   └── ...
+│   ├── fee.html
+│   ├── hostel.html
+│   ├── exam.html
+│   └── student_dashboard.html
 │
-├── Database/
+├── Database
 │   └── student_erp_db.sql
 │
-├── serve_frontend.py
+├── terraform
+│   ├── provider.tf
+│   ├── main.tf
+│   ├── variables.tf
+│   └── outputs.tf
+│
+├── .github
+│   └── workflows
+│       └── deploy.yml
+│
+├── Dockerfile
+├── docker-compose.yml
 ├── requirements.txt
-├── .env
-├── .gitignore
 └── README.md
 ```
 
 ---
 
-## Installation Guide
+## Local Deployment
 
-### 1. Clone Repository
+### Clone Repository
 
 ```bash
 git clone https://github.com/dhar-mik200/ERP-Student-Management-System.git
 cd ERP-Student-Management-System
 ```
 
-### 2. Install Dependencies
+### Build Docker Image
 
 ```bash
-pip install -r requirements.txt
+docker build -t erp-student-management .
 ```
 
-### 3. Create MySQL Database
-
-```sql
-CREATE DATABASE student_erp_db;
-```
-
-Import:
-
-```text
-Database/student_erp_db.sql
-```
-
-### 4. Configure Environment Variables
-
-Create a `.env` file:
-
-```env
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=your_mysql_password
-DB_NAME=student_erp_db
-
-SECRET_KEY=your_secret_key
-```
-
-### 5. Run Backend
+### Start Application
 
 ```bash
-cd Backend
-python app.py
+docker compose up -d --build
 ```
 
-Backend URL:
-
-```text
-http://127.0.0.1:5000
-```
-
-### 6. Run Frontend
-
-Open a new terminal:
+### Verify Containers
 
 ```bash
-python serve_frontend.py
+docker compose ps
 ```
 
-Frontend URL:
+### Access Application
 
 ```text
-http://127.0.0.1:8000/login.html
+http://localhost:5000
 ```
 
 ---
 
-## User Roles
+## AWS Deployment Using Terraform
 
-### Student Login
+### Initialize Terraform
 
-Username:
-```text
-Student ID
+```bash
+terraform init
 ```
 
-Password:
-```text
-Date of Birth
+### Check Infrastructure Plan
+
+```bash
+terraform plan
 ```
 
-### Admin Login
+### Create Infrastructure
 
-Username:
-```text
-admin
+```bash
+terraform apply
 ```
 
-Password:
-```text
-admin123
+### Destroy Infrastructure
+
+```bash
+terraform destroy
 ```
 
 ---
 
-## Future Enhancements
+## CI/CD Pipeline
 
-- Docker Support
-- Docker Compose
-- AWS EC2 Deployment
-- CI/CD using GitHub Actions
-- Email Notifications
-- Role Management
-- Report Generation
+GitHub Actions automatically deploys the application whenever code is pushed to the main branch.
+
+### Workflow Process
+
+```text
+Git Push
+↓
+GitHub Actions Triggered
+↓
+SSH Connection to EC2
+↓
+Git Pull Latest Code
+↓
+Docker Compose Down
+↓
+Docker Compose Up --Build
+↓
+Updated Application Deployment
+```
+
+---
+
+## DevOps Highlights
+
+* Infrastructure as Code using Terraform
+* Containerized Application using Docker
+* Multi-Container Architecture using Docker Compose
+* Automated CI/CD using GitHub Actions
+* AWS Cloud Deployment
+* Linux Server Administration
+* Git-Based Version Control
+
+---
+
+## Skills Demonstrated
+
+* AWS EC2
+* Terraform
+* Infrastructure as Code (IaC)
+* Docker
+* Docker Compose
+* GitHub Actions
+* CI/CD
+* Linux
+* Git
+* GitHub
+* Flask
+* MySQL
+* Cloud Deployment
+* DevOps Practices
+
+---
+
+## Resume Project Summary
+
+Developed and deployed an ERP Student Management System on AWS EC2 using Terraform, Docker, Docker Compose, and GitHub Actions. Implemented Infrastructure as Code, automated CI/CD deployment pipelines, managed Linux-based cloud infrastructure, and deployed a multi-container Flask-MySQL application in a production-like environment.
 
 ---
 
 ## Author
 
-Dharmik
+Dharmik Kapadiya
 
 GitHub:
 https://github.com/dhar-mik200
 
----
+Project Repository:
+https://github.com/dhar-mik200/ERP-Student-Management-System
