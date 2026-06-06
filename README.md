@@ -276,8 +276,6 @@ Updated Application Deployment
 
 ---
 
----
-
 ## Author
 
 Dharmik Kapadiya
